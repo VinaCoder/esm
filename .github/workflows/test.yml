@@ -1,0 +1,41 @@
+name: Test
+
+on: [pull_request]
+
+jobs:
+  test:
+    name: Testing application
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        node: [18]
+        php: [8.1]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, dom, fileinfo, mysql
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'yarn'
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: Prepare environment
+        run: |
+          chmod -R 775 storage bootstrap/cache
+          php -r "file_exists('.env') || copy('.env.example', '.env');"
+          php artisan key:generate
+      - name: Compile assets
+        run: |
+          yarn install
+          yarn run build
+      - uses: actions/cache@v3
+        with:
+          path: |
+            vendor
+            node_modules
+          key: composer-${{ hashFiles('composer.lock') }}-package-${{ hashFiles('package.lock') }}
+      - name: Execute tests (Unit and Feature tests) via pestphp
+        run: make test
