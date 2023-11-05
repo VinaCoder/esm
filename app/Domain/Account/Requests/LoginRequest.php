@@ -32,9 +32,9 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    public function loginByEmail(): bool
+    public function loginByEmail(mixed $data = null): bool
     {
-        return Str::isEmail($this->get('login_id'));
+        return Str::isEmail($data ?: $this->get('login_id'));
     }
 
     /**
@@ -97,7 +97,7 @@ class LoginRequest extends FormRequest
     {
         if (! empty($data)) {
             return [
-                $this->getColumnLoginId() => data_get($data, 'login_id'),
+                $this->getColumnLoginId($loginId = data_get($data, 'login_id')) => $loginId,
                 'password' => data_get($data, 'password'),
             ];
         }
@@ -108,8 +108,8 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    public function getColumnLoginId(): string
+    public function getColumnLoginId(mixed $data = null): string
     {
-        return $this->loginByEmail() ? 'email' : 'username';
+        return $this->loginByEmail($data) ? 'email' : 'username';
     }
 }
