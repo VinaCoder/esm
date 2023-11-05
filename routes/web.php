@@ -1,5 +1,7 @@
 <?php
 
+use App\Livewire\Auth\Login;
+use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
 /*
@@ -13,4 +15,10 @@ use Livewire\Volt\Volt;
 |
 */
 
-Volt::route('/', 'index');
+Route::middleware(['guest'])->group(function () {
+    Route::get('login', Login::class)->name('login');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Volt::route('/', 'index')->name('home');
+});
