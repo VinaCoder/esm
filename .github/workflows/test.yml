@@ -10,16 +10,6 @@ jobs:
       matrix:
         node: [18]
         php: [8.1]
-    services:
-      mysql:
-        image: mysql:latest
-        env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: false
-          MYSQL_ROOT_PASSWORD: root
-          MYSQL_DATABASE: esm
-        ports:
-          - 3306/tcp
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
       - uses: actions/checkout@v3
       - uses: shivammathur/setup-php@v2
@@ -48,9 +38,4 @@ jobs:
             node_modules
           key: composer-${{ hashFiles('composer.lock') }}-package-${{ hashFiles('package.lock') }}
       - name: Execute tests (Unit and Feature tests) via pestphp
-        env:
-          DB_CONNECTION: mysql
-          DB_DATABASE: esm
-          DB_USERNAME: root
-          DB_PASSWORD: root
         run: make test
