@@ -1,0 +1,42 @@
+name: Test
+
+on: [pull_request]
+
+jobs:
+  test:
+    name: Testing application
+    runs-on: ubuntu-22.04
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: false
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: esm
+        ports:
+          - 3306/tcp
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mbstring, dom, fileinfo, mysql
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: Prepare environment
+        run: |
+          chmod -R 775 storage bootstrap/cache
+          php -r "file_exists('.env') || copy('.env.example', '.env');"
+          php artisan key:generate
+      - uses: actions/cache@v3
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+      - name: Execute tests (Unit and Feature tests) via pestphp
+        env:
+          DB_CONNECTION: mysql
+          DB_DATABASE: esm
+          DB_USERNAME: root
+          DB_PASSWORD: root
+        run: make test

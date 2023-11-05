@@ -1,0 +1,27 @@
+name: Linter
+
+on: [pull_request]
+
+jobs:
+  lint:
+    name: Check lint
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          extensions: mbstring, dom, fileinfo, mysql
+      - name: Install Dependencies
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+      - name: Prepare environment
+        run: |
+          chmod -R 775 storage bootstrap/cache
+          php -r "file_exists('.env') || copy('.env.example', '.env');"
+          php artisan key:generate
+      - uses: actions/cache@v3
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+      - name: Check lint code via Laravel Pint
+        run: make check
