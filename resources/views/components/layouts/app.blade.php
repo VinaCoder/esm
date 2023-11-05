@@ -9,6 +9,8 @@
 
     <title>{{ $title ?? 'ESM' }}</title>
     @vite(['resources/scss/app.scss', 'resources/js/app.js'])
+    @livewireStyles
+    @livewireScripts
 </head>
 <body>
     {{ $slot }}

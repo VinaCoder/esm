@@ -42,6 +42,12 @@ return [
         ],
     ],
 
+    /**
+     * Số lần đăng nhập tối đa nếu thông tin đăng nhập không chính xác
+     * Nếu vượt quá con số này thì hệ thống sẽ khóa request đó lại
+     */
+    'max_attempts' => 5,
+
     /*
     |--------------------------------------------------------------------------
     | User Providers
