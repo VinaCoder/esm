@@ -28,6 +28,6 @@ class Login extends Component
 
         Session::regenerate();
 
-        $this->redirectRoute('home');
+        $this->redirectRoute('home', navigate: true);
     }
 }
