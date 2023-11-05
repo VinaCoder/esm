@@ -30,7 +30,6 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: 'yarn'
-        run: yarn install
       - name: Install Dependencies
         run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
       - name: Prepare environment
@@ -39,7 +38,9 @@ jobs:
           php -r "file_exists('.env') || copy('.env.example', '.env');"
           php artisan key:generate
       - name: Compile assets
-        run: yarn run build
+        run: |
+          yarn install
+          yarn run build
       - uses: actions/cache@v3
         with:
           path: |
