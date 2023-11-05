@@ -7,4 +7,7 @@
 </p>
 
 ### Giới thiệu
+
 Quản lý và theo dõi tình trạng server dễ dàng hơn với ESM
+
+<a href="https://www.buymeacoffee.com/ducconit" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee"></a>
