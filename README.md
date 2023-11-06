@@ -26,6 +26,6 @@ quan trọng nhất là có một công cụ quản lý server một cách dễ 
 
 ### Resources
 
-- Theme: [Synto](https://terabox.com/s/1KIOz57iJzqgP3Vl1sxlrWQ)
+- Theme: [Konrix](https://terabox.com/s/150bvjyWxy_bDrxJ8AFKnDA) / [Preview](https://coderthemes.com/konrix/layouts/sidebar-dark.html)
 
 <a href="https://www.buymeacoffee.com/ducconit" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee"></a>
