@@ -10,4 +10,22 @@
 
 Quản lý và theo dõi tình trạng server dễ dàng hơn với ESM
 
+### Stack
+
+Sử dụng tall-stack. Nếu ai không biết thì đó là:
+
+- Tailwind
+- Alpinejs
+- Laravel
+- Livewire
+
+### Mục tiêu
+
+Qua dự án học được cách quản lý là phát triển một dự án opensource cũng như học hỏi kinh nghiệm từ cộng đồng và điều
+quan trọng nhất là có một công cụ quản lý server một cách dễ dàng hơn.
+
+### Resources
+
+- Theme: [Synto](https://terabox.com/s/1KIOz57iJzqgP3Vl1sxlrWQ)
+
 <a href="https://www.buymeacoffee.com/ducconit" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee"></a>
