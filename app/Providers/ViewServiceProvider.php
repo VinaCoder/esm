@@ -15,6 +15,11 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->registerComponents();
+    }
+
+    private function registerComponents(): void
+    {
         Blade::anonymousComponentPath(resource_path('views/icons'), 'icons');
     }
 }
