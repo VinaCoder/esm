@@ -21,11 +21,8 @@
     },
     "dependencies": {
         "feather-icons": "^4.29.1",
-        "flatpickr": "^4.6.13",
-        "inputmask": "^5.0.8",
         "laravel-echo": "^1.15.3",
         "pusher-js": "^8.3.0",
-        "simplebar": "^6.2.5",
-        "sweetalert2": "^11.9.0"
+        "simplebar": "^6.2.5"
     }
 }

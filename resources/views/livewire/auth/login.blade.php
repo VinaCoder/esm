@@ -5,10 +5,8 @@
                 <div class="p-6">
 
                     <div class="block mb-8">
-                        <img class="h-12 lg:h-16 mx-auto block dark:hidden"
-                             src="{{ asset('images/logo-dark.png') }}" alt="Logo">
-                        <img class="h-12 lg:h-16 mx-auto hidden dark:block"
-                             src="{{ asset('images/logo-light.png') }}" alt="Logo">
+                        <img class="h-12 lg:h-16 mx-auto"
+                             src="{{ asset('images/logo.png') }}" alt="Logo">
                     </div>
 
                     <form method="POST" action="#" wire:submit.prevent="login">
