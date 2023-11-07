@@ -39,3 +39,7 @@ jobs:
           key: composer-${{ hashFiles('composer.lock') }}-package-${{ hashFiles('package.lock') }}
       - name: Execute tests (Unit and Feature tests) via pestphp
         run: make test
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
