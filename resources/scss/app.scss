@@ -6,6 +6,9 @@
 @tailwind components;
 @tailwind utilities;
 
+// Structure
+@import "structure/sidenav";
+
 // Components
 @import "components/reboot";
 @import "components/buttons";

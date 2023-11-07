@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr" data-nav-layout="vertical" class="light"
-      data-header-styles="light" data-menu-styles="dark">
+      data-header-styles="light" data-menu-styles="dark" data-sidenav-view="default" data-menu-color="dark">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

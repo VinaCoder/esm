@@ -14,7 +14,7 @@ class Login extends Component
 
     public function render(): Renderable
     {
-        return view('livewire.auth.login')->title(__('Đăng nhập'));
+        return view('livewire.auth.login')->title(__('Đăng nhập'))->layout('components.layouts.base');
     }
 
     /**
